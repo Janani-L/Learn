@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Timetable</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Timetable for 7 Days</h2>
+    <form id="marksForm">
+        <label for="maths">Mathematics Marks:</label>
+        <input type="number" id="maths" required><br>
+        <label for="science">Science Marks:</label>
+        <input type="number" id="science" required><br>
+        <label for="english">English Marks:</label>
+        <input type="number" id="english" required><br>
+        <button type="button" onclick="generateTimetable()">Generate Timetable</button>
+    </form>
+    <div id="timetable"></div>
+</div>
+
+<script>
+function generateTimetable() {
+    var maths = parseInt(document.getElementById("maths").value);
+    var science = parseInt(document.getElementById("science").value);
+    var english = parseInt(document.getElementById("english").value);
+
+    var timetable = {
+        "Mathematics": getSchedule(maths),
+        "Science": getSchedule(science),
+        "English": getSchedule(english)
+    };
+
+    var tableHtml = "<table>";
+    tableHtml += "<tr><th>Day</th><th>Mathematics</th><th>Science</th><th>English</th></tr>";
+    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    for (var i = 0; i < days.length; i++) {
+        tableHtml += "<tr>";
+        tableHtml += "<td>" + days[i] + "</td>";
+        for (var subject in timetable) {
+            tableHtml += "<td>" + timetable[subject][i] + "</td>";
+        }
+        tableHtml += "</tr>";
+    }
+    tableHtml += "</table>";
+
+    document.getElementById("timetable").innerHTML = tableHtml;
+}
+
+function getSchedule(mark) {
+    var schedule = [];
+    if (mark < 50) {
+        schedule = ["Study 2 hours", "Study 2 hours", "Study 2 hours", "Study 2 hours", "Study 2 hours", "Study 2 hours", "Study 2 hours"];
+    } else if (mark >= 50 && mark <= 80) {
+        schedule = ["Study 1 hour", "", "Study 1 hour", "", "Study 1 hour", "", "Study 1 hour"];
+    } else {
+        schedule = ["", "Study 1 hour", "", "Study 1 hour", "", "Study 1 hour", ""];
+    }
+    return schedule;
+}
+</script>
+
+</body>
+</html>
+
+
+

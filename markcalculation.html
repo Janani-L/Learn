@@ -48,7 +48,9 @@
         <h2>Enter Marks</h2>
     </div>
     <div id="output"></div>
+    <button id="generateTimetableBtn" style="display: none;" onclick="generateTimetable()">Generate Timetable</button>
 </div>
+
 
 <script>
 document.getElementById("subjectForm").addEventListener("submit", function(event) {
@@ -83,6 +85,7 @@ document.getElementById("marksForm").addEventListener("submit", function(event) 
         outputHtml += subject + ": " + results[subject] + "<br>";
     }
     document.getElementById("output").innerHTML = outputHtml;
+    document.getElementById('generateTimetableBtn').style.display = 'block';
 });
 
 function getPerformance(mark) {
@@ -94,7 +97,12 @@ function getPerformance(mark) {
         return "Good";
     }
 }
+function generateTimetable() {
+  // Assuming redirection to another page named timetable.html
+  window.location.href = 'timetable.html';
+}
 </script>
 
 </body>
 </html>
+
