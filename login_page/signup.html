@@ -9,6 +9,38 @@
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
     }
+
+    .navbar {
+    background-color: orange;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  .navbar-text {
+    margin-right: auto;
+  }
+  .navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .navbar li {
+    margin-right: 20px;
+  }
+  .navbar li:last-child {
+    margin-right: 0;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: white;
+  }
+  .navbar .navbar-text li a:hover{
+    color:rgb(212, 139, 4);
+  }
+
     .container {
         max-width: 400px;
         margin: 100px auto;
@@ -52,6 +84,13 @@
 </style>
 </head>
 <body class="signup" id="signup">
+
+    <div class="navbar">
+        <div class="navbar-text">JANVIN</div>
+        <ul>
+          <li><a href="../index.html" >Home</a></li>
+        </ul>
+      </div>
 
 <div class="container">
     <h2>SignUp</h2>
